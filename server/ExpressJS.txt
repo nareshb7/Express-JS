@@ -1,0 +1,7 @@
+Express JS:--
+
+=> Express js is a backend Node JS framework
+=> It is designed to build web applications and API's
+
+=> to start we must use npm init command in the terminal
+=> after entering the total data use npm i express
