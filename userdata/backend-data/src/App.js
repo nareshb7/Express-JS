@@ -12,14 +12,18 @@ function App() {
     axios.post('http://localhost:4040/addproducts',data).then(
       ()=> {
         alert('Data Saved Sucessfully')
+        setData({id:'', name:''})
       }
     ).catch(err=> console.log(err))
+    axios.get('http://localhost:4040/users')
+    .then(result => console.log('Api data=> ', result.data))
+    .catch(err => console.log(err))
   }
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
         <div>
-          <input type='number' value={data.id} placeholder='id' onChange={(e)=> setData({...data,id: e.target.value})} required/>
+          <input type='number' value={data.id} placeholder='id' onChange={(e)=> setData({...data,id: parseInt(e.target.value)})} required/>
         </div>
         <div>
           <input type='text' value={data.name} placeholder='Enter name' onChange={(e)=> setData({...data,name: e.target.value})} required />

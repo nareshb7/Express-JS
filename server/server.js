@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
-app.get('/',(req,res)=>{
-    res.send('<h1>Hello India!!</h1>')
-})
+
+app.use(express.json())
+// app.use(express.urlencoded({extended: false}))
+
 const users =[
     {
         id:1,
@@ -18,10 +19,10 @@ const users =[
         name: 'Ram'
     }
 ]
-app.get('/users', (req,res)=>{
-    // To send the data as json
-    res.json(users)
+app.get('/',(req,res)=>{
+    res.send('<h1>Hello India!!</h1>')
 })
+
 
 app.get('/users/:id',(req,res)=>{
     console.log(req.params, 'rq pqrams')
@@ -30,8 +31,14 @@ app.get('/users/:id',(req,res)=>{
 })
 app.post('/addproducts',(req,res)=>{
     // const {id, name} = req.body
-    console.log(req, 'ok')
+    users.push(req.body)
+    console.log(req.body , 'ok')
     return res.send(`Data Stored`)
+})
+app.get('/users', (req,res)=>{
+    // To send the data as json
+    res.json(users)
+    return users
 })
 
 app.listen(4040, ()=> console.log('Server is running...'))
