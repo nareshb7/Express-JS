@@ -5,3 +5,8 @@ Express JS:--
 
 => to start we must use npm init command in the terminal
 => after entering the total data use npm i express
+
+=> res.sendStatus(500)
+=> res.status(500).json({ message : 'Hello'})
+=> res.json({message: 'Hello world'})
+=> res.download("server.js")
